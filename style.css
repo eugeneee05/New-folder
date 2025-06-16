@@ -1,0 +1,21 @@
+h1 {
+    font-family: Tahoma;
+    font-size: 1.5em;
+    }
+
+h2 {
+    font-family: Copperplate, "Copperplate Gothic";
+    font-size: 1.25em;
+    }
+
+h1.big {
+    font-family: Tahoma;
+    font-size: 2.5em;
+    color: #000080
+    }
+
+h2.big {
+    font-family: "Times New Roman";
+    font-size: 1.5em;
+    color: #000080
+    }
