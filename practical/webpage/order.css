@@ -1,0 +1,231 @@
+/* Universal styling and font import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f44336;
+    --bg-color: #f0f4f8;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings and Typography */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.5rem;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Item Quantity Controls */
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--container-bg);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.item label {
+    font-weight: 600;
+    flex-grow: 1; /* Allows label to take up available space */
+}
+
+.item-subtotal {
+    font-weight: 600;
+    color: #555;
+    min-width: 70px; /* Aligns subtotals nicely */
+    text-align: right;
+}
+
+/* This is the key part that creates the unified, aligned shape. */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.quantity-controls:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: #ddd;
+}
+
+.quantity-controls span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-width: 25px;
+    text-align: center;
+}
+
+/* Total Price & Current Time */
+#totalPrice {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#dateTime {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.buttons button {
+    width: 48%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button[onclick="submitOrder()"] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+button[onclick="resetForm()"] {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Stay on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+    text-align: left;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+pre#modalSummary {
+    white-space: pre-wrap; /* Keeps formatting of summary */
+    font-family: monospace;
+    font-size: 1.1em;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+}

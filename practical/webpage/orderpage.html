@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Western Food Order</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍽 Western Food Order</h1>
+        <p>All prices are exclusive of 10% service tax.</p>
+
+        <form id="orderForm">
+            <h2>Customer Information</h2>
+            <input type="text" id="fullName" placeholder="Full Name" pattern="[A-Za-z\s'-]+" title="Name can only contain letters, spaces, hyphens, or apostrophes." required>
+            
+            <input type="email" id="email" placeholder="Email Address" required>
+            
+            <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{9,11}" title="Please enter a valid 9 to 11 digit phone number." required>
+
+            <h2>🥘 Meals</h2>
+            <div class="item">
+                <label>Fish and Chips - RM19.90</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('mealFish', -1)">−</button>
+                    <span id="mealFishQty">0</span>
+                    <button type="button" onclick="updateQty('mealFish', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="mealFishSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Black Pepper Chicken - RM25.50</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('mealChicken', -1)">−</button>
+                    <span id="mealChickenQty">0</span>
+                    <button type="button" onclick="updateQty('mealChicken', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="mealChickenSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Spaghetti — RM12.90</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('mealSpaghetti', -1)">−</button>
+                    <span id="mealSpaghettiQty">0</span>
+                    <button type="button" onclick="updateQty('mealSpaghetti', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="mealSpaghettiSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Chicken Burger — RM9.90</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('mealBurger', -1)">−</button>
+                    <span id="mealBurgerQty">0</span>
+                    <button type="button" onclick="updateQty('mealBurger', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="mealBurgerSubtotal">RM0.00</span>
+            </div>
+
+            <h2>🥤 Drinks</h2>
+            <div class="item">
+                <label>Coke — RM4.50</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('drinkCoke', -1)">−</button>
+                    <span id="drinkCokeQty">0</span>
+                    <button type="button" onclick="updateQty('drinkCoke', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="drinkCokeSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Coffee — RM3.00</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('drinkCoffee', -1)">−</button>
+                    <span id="drinkCoffeeQty">0</span>
+                    <button type="button" onclick="updateQty('drinkCoffee', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="drinkCoffeeSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Ice Cream — RM4.00</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('drinkIceCream', -1)">−</button>
+                    <span id="drinkIceCreamQty">0</span>
+                    <button type="button" onclick="updateQty('drinkIceCream', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="drinkIceCreamSubtotal">RM0.00</span>
+            </div>
+            <div class="item">
+                <label>Lemon Tea — RM3.00</label>
+                <div class="quantity-controls">
+                    <button type="button" onclick="updateQty('drinkLemonTea', -1)">−</button>
+                    <span id="drinkLemonTeaQty">0</span>
+                    <button type="button" onclick="updateQty('drinkLemonTea', 1)">+</button>
+                </div>
+                <span class="item-subtotal" id="drinkLemonTeaSubtotal">RM0.00</span>
+            </div>
+
+            <h2>📝 Special Requests</h2>
+            <textarea id="notes" placeholder="E.g., no onions, extra ketchup..."></textarea>
+
+            <h2>🕒 Current Time</h2>
+            <p id="dateTime"></p>
+
+            <h2>💰 Total Price: <span id="totalPrice">RM0.00</span></h2>
+
+            <div class="buttons">
+                <button type="button" onclick="resetForm()">Reset</button>
+                <button type="button" onclick="submitOrder()">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Order Summary</h2>
+            <pre id="modalSummary"></pre>
+        </div>
+    </div>
+
+    <script src="order.js"></script>
+</body>
+</html>
